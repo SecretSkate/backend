@@ -12,17 +12,17 @@ router.get('/', (req, res) => {
 });
 
 function validUser(user) {
-  const validEmail = typeof user.email == 'string'  &&
-                      user.email.trim() != '';
-  const validPassword = typeof user.password == 'string' &&
-                        user.password.trim() != '' &&
-                        user.password.trim().length >= 6;
+  const validEmail = typeof skater.email == 'string'  &&
+                      skater.email.trim() != '';
+  const validPassword = typeof skater.password == 'string' &&
+                        skater.password.trim() != '' &&
+                        skater.password.trim().length >= 6;
   return validEmail && validPassword;
 }
 
-function validName(user) {
-  return typeof user.name == 'string'  &&
-                user.name.trim() != '';
+function validName(skater) {
+  return typeof skater.name == 'string'  &&
+                skater.name.trim() != '';
 }
 
 router.post('/signup', (req, res, next) => {
@@ -59,7 +59,7 @@ router.post('/signup', (req, res, next) => {
 });
 
 function setUserIdCookie(req, res, id) {
-  res.cookie('user_id', id, {
+  res.cookie('skater_id', id, {
     httpOnly: true,
     signed: true,
     secure: req.app.get('env') != 'development'
@@ -73,12 +73,12 @@ router.post('/login', (req, res, next) => {
       .getOneByEmail(req.body.email)
       .then(user => {
         if (user) {
-          bcrypt.compare(req.body.password, user.password)
+          bcrypt.compare(req.body.password, skater.password)
                 .then(result => {
                   if (result) {
-                    setUserIdCookie(req, res, user.id);
+                    setUserIdCookie(req, res, skater.id);
                     res.json({
-                      id: user.id,
+                      id: skater.id,
                       message: 'logged in!'
                     });
                   } else {
@@ -96,9 +96,9 @@ router.post('/login', (req, res, next) => {
 
 
 router.get('/logout', (req, res) => {
-  res.clearCookie('user_id');
+  res.clearCookie('skater_id');
   res.json({
-    message: 'logged out!'
+    message: 'Bye!'
   });
 });
 

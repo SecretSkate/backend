@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var dotenv = require('dotenv').config();
 var aws = require('aws-sdk');
+var knex = require('../db/db_connection');
 
 const S3_BUCKET = process.env.S3_BUCKET;
 
@@ -27,9 +28,18 @@ router.get('/sign-s3', (req, res) => {
     };
     res.write(JSON.stringify(returnData));
     res.end();
-
   });
 });
+
+router.post('/videos', (req, res) => {
+  console.log(req.body);
+  knex('video')
+    .insert(req.body)
+    .returning('*')
+    .then(function(result) {
+    res.send(result)
+  })
+})
 
 
 module.exports = router;

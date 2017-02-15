@@ -14,7 +14,7 @@
 
     <form method="POST" action="/save-details">
         <input type="hidden" id="avatar-url" name="avatar-url" value="/images/default.png">
-        <input type="text" name="username" placeholder="Username"><br>
+        <input type="text" id="username" name="username" placeholder="Username"><br>
         <input type="text" name="full-name" placeholder="Full name"><br><br>
         <input type="submit" value="Update profile">
     </form>
@@ -49,10 +49,12 @@
 
             function uploadFile(file, signedRequest, url) {
                 $.ajax({
-                  username: req.body.username,
-                  video_url: req.body.video_url
+                  type: 'PUT',
+                  username: $('#username').val,
+                  video_url: file.body.video_url,
+                  location: file.body.location
                 }, signedRequest);
-                $.onreadystatechange = () => {
+                success: $.onreadystatechange = () => {
                     if ($readyState === 4) {
                         if ($status === 200) {
                             $('#preview').src = url;
@@ -64,6 +66,19 @@
                 };
                 xhr.send(file);
             }
+          })
+          var obj = {
+            username: req.body.username,
+            video_url: req.body.video_url,
+            location: req.body.location
+          }
+          $.put('/upload', obj, function(result) {
+            $.ajax({
+              type: 'PUT',
+              success: function(){
+
+              }
+            })
           })
     </script>
 

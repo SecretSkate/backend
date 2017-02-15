@@ -17,7 +17,7 @@ app.set('view engine', 'jade');
 
 // CORS
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "http://10.6.81.230:8100/ionic-lab");
+  res.header("Access-Control-Allow-Origin", "10.6.81.230:8100/ionic-lab");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 })

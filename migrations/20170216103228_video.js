@@ -4,10 +4,10 @@ exports.up = function(knex, Promise) {
     table.increments()
     table.text('title')
     table.text('video_url').notNullable()
-    table.text('location').notNullable()
     table.text('comments')
-    table.integer('likes')
+    table.integer('points')
     table.integer('skater_id').references('skater.id').onDelete('CASCADE')
+    table.datetime('date').notNullable()
   })
 };
 

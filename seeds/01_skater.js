@@ -10,6 +10,7 @@ exports.seed = function(knex, Promise) {
                     id: 1,
                     first_name: 'Michael',
                     last_name: 'Roque',
+                    email: 'mike@secretskate.com',
                     username: 'ChocoTaco',
                     password: bcrypt.hashSync('tunaTostada38'),
                     date_joined: new Date()
@@ -18,6 +19,7 @@ exports.seed = function(knex, Promise) {
                     id: 2,
                     first_name: 'Chana',
                     last_name: 'Reynolds',
+                    email: 'chana@secretskate.com',
                     username: 'ChanaBanana',
                     password: bcrypt.hashSync('chanaBanana38'),
                     date_joined: new Date()
@@ -26,6 +28,7 @@ exports.seed = function(knex, Promise) {
                     id: 3,
                     first_name: 'Phil',
                     last_name: 'Cunnell',
+                    email: 'phil@secretskate.com',
                     username: 'Philthy',
                     password: bcrypt.hashSync('cactusCooler38'),
                     date_joined: new Date()
@@ -34,6 +37,7 @@ exports.seed = function(knex, Promise) {
                     id: 4,
                     first_name: 'Luke',
                     last_name: 'McCrae',
+                    email: 'luke@secretskate.com',
                     username: 'McCraeCray',
                     password: bcrypt.hashSync('lankyLuke38'),
                     date_joined: new Date()

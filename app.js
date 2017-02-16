@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', users);
 app.use('/upload', upload);
-app.use('/spots', spots);
+app.use('/skate-spot', spots);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

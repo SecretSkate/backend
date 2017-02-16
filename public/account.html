@@ -8,13 +8,12 @@
 </head>
 
 <body>
-    <input type="file" id="file-input">
     <p id="status">Please select a file</p>
-    <img id="preview" src="/images/default.png">
+    <input type="file" id="file-input">
+    <img id="preview" src="">
 
     <form method="POST" action="/app-video">
-        <input type="hidden" id="video-url" name="video-url" value="/images/default.png">
-        <input type="text" name="username" placeholder="Username"><br>
+        <input type="hidden" id="video-url" name="video-url" value="">
         <input type="submit" value="Update profile">
     </form>
 
@@ -56,10 +55,12 @@
                         document.getElementById('video-url').value = url;
                         $.post('upload/videos', {
                           skater_id: 1,
-                          location: 'Denver',
+                          title: 'test',
+                          comments: file.comments,
+                          points: file.points,
                           video_url: `https://s3-us-west-2.amazonaws.com/secretskatevids/${file.name}`},
                         function(data){
-                          console.log('DID STUFF', data);
+                          console.log(data);
                         })
                     } else {
                         alert('Could not upload file.');

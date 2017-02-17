@@ -37,7 +37,7 @@ router.post('/videos', (req, res) => {
     .insert(req.body)
     .returning('*')
     .then(function(result) {
-    res.send(result)
+    res.send(result[0])
   })
 })
 

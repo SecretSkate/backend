@@ -22,4 +22,12 @@ router.get('/video', function(req, res, next) {
         })
 });
 
+router.get('/video/url', function(req, res, next) {
+    console.log("Something");
+    knex.select('video_url').from('video')
+        .then(function(data) {
+            res.json(data)
+        })
+});
+
 module.exports = router;

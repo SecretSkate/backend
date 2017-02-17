@@ -41,5 +41,15 @@ router.post('/videos', (req, res) => {
   })
 })
 
+router.post('/spots', (req, res) => {
+  console.log(req.body);
+  knex('skate_spot')
+    .insert(req.body)
+    .returning('*')
+    .then(function(result) {
+    res.send(result[0])
+  })
+})
+
 
 module.exports = router;

@@ -13,10 +13,10 @@ router.get('/', function(req, res, next) {
         })
 });
 
-router.get('/video/:id', function(req, res, next) {
+router.get('/video', function(req, res, next) {
     console.log("Something");
-    knex('video')
-        .where(id, req.params.id)
+    knex.select('video_url')
+        .from('video')
         .then(function(data) {
             res.json(data)
         })

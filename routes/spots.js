@@ -15,8 +15,8 @@ router.get('/', function(req, res, next) {
 
 router.get('/video', function(req, res, next) {
     console.log("Something");
-    knex.select('video_url')
-        .from('video')
+    knex.from('video')
+        .innerJoin('skate_spot', 'video.id', 'skate_spot.video_id')
         .then(function(data) {
             res.json(data)
         })
